@@ -4,7 +4,7 @@ import {useState} from "react"
 import Test from "../Test"
 
 
-function Drawer({takenx, name, v,value,m}) {
+function Drawer({takenx, name, v,value,m, display,setDisplay}) {
 let childx = 13;    
 let finish =[];
 let xxxx =(v.map((reptile) => (
@@ -59,7 +59,7 @@ console.log(xxxx)   //AREEY of days on pointed on the range
         
             
 {/* {finish} */}
-<Test xxxx={xxxx} value={value} eve={eve} takenx={takenx}></Test>
+<Test xxxx={xxxx} value={value} eve={eve} takenx={takenx} display={display} setDisplay={setDisplay}></Test>
 
         
          

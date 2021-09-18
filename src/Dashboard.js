@@ -24,7 +24,16 @@ history.push("/")
     }
 
 
+    async function bookHoliday(){
+    
+history.push("/book-holiday")
+
+
+
   
+
+
+    }
     return (
         <div>
             <Card>
@@ -40,7 +49,7 @@ history.push("/")
 
 
                  <Button variant="link" onClick={handleLogout}>Log Out</Button>
-                 
+                 <Button variant="link" onClick={bookHoliday}>Book your holidays</Button>
                 </div>
         </div>
     )

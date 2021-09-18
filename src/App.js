@@ -11,6 +11,7 @@ import LogIn from "./LogIn"
 import PrivateRoute from "./PrivateRoute"
 import Dashboard from "./Dashboard"
 import ForgotPassword from './ForgotPassword';
+import Test from "./Test"
 // import Add from "./Add"
 // import { useGetData } from './useGetData';
 
@@ -30,8 +31,9 @@ function App() {
   // console.log(startend[0].startDate)}
 
   return (
-    <div className="App">
+    <div className="Apps">
       <AuthProvider>
+      
     <Router>
 
       <Switch>
@@ -39,14 +41,17 @@ function App() {
         <Route path="/signup" component={SignUp}/>
         <Route path="/login" component={LogIn}/>
         <Route path="/forgot-password" component={ForgotPassword}></Route>
+        <Route path="/book-holiday"><Calendar setCount={setCount} setStartEnd={setStartEnd}></Calendar><Employers count={count} startend={startend}></Employers></Route>
+        <Route path="employers" component={Employers}></Route>
+        <Route path="test" component={Test}></Route>
       </Switch>
     </Router>
-      <Calendar setCount={setCount} setStartEnd={setStartEnd}></Calendar>
-<Card></Card>
-    <Employers count={count} startend={startend}></Employers>
+    
+    
+ 
     </AuthProvider>
 
-<p>count: {count}</p>
+
 
 {/* <Add></Add> */}
 

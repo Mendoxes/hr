@@ -6,6 +6,7 @@ import 'firebase/firestore';
 import React,{useState,useEffect} from 'react';
 import {useAuth} from "./contexts/AuthContext"
 import MainCalendar from "react-calendar"
+import {Form,Button,Card,Alert} from "react-bootstrap"
 
 
 
@@ -34,7 +35,11 @@ import MainCalendar from "react-calendar"
 //                 time: 2018});
 // }
 
-function Test({xxxx, value, eve,takenx}) {
+function Test({xxxx, value, eve,takenx,display,setDisplay}) {
+
+  useEffect(() => {
+    ok()
+ },[]);
   const [people, setPeople]=useState([])
   const [uniquestate, setUniqueState]=useState("")
     const [state, setState]=useState()
@@ -73,7 +78,7 @@ let xx = value.getMonth() +1;
 let test ;
 
 async function ok (){
-  
+  setDisplay("display0")
     const sk =[];
     const ks = []
     const di = []
@@ -186,16 +191,15 @@ event?callonce():console.log("end")
        
         {/* {array && array} */}
 
-        <div>
-    {uniquestate&&uniquestate.map((person) => (
-       <div className="cart_container"> <p className="cart">Hello, {person} </p></div>
-    ))}
-    </div>
+       
 
-        {uniquestate&&uniquestate} 
+        {/* {uniquestate&&uniquestate}  */}
        
         {/* <strong>Email:</strong> {currentUser&&currentUser.email} */}
-              <button onClick={ok}>JEZYU </button>
+              <Card className={display}>
+              <Card.Title>Holiday confirmation</Card.Title>
+              <Card.Text>Are you sure you want to confirm your holiday?</Card.Text>
+              <Button  onClick={ok}>Yes </Button></Card>
           <div onClick={ok}>
             
               <MainCalendar
@@ -204,7 +208,11 @@ event?callonce():console.log("end")
         value={values}
       
       /></div>
-    
+     <div>
+    {uniquestate&&uniquestate.map((person) => (
+       <div className="cart_container"> <p className="cart"> {person} </p></div>
+    ))}
+    </div>
     </div>
   );
 }

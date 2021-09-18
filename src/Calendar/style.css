@@ -1,0 +1,17 @@
+.rdrDefinedRangesWrapper{
+    display:none;
+}
+
+.rdrMonthName{
+    background-color: #F98E4C;
+    color:white;
+}
+
+.calendarRange{
+    flex:1 0 30%;
+    position:relative;
+}
+
+.react-calendar{
+    width:100%;
+}

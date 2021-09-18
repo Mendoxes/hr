@@ -2,19 +2,21 @@ import React, { useState } from 'react';
 
 import 'react-calendar/dist/Calendar.css';
 
-
+import {Form,Button,Card,Alert} from "react-bootstrap"
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRangePicker } from 'react-date-range';
 import { addDays } from 'date-fns';
-
-
+import {useHistory, Link} from "react-router-dom"
+import "./style.css"
 
 
 
 function Calendar({ setCount, setStartEnd }) {
 
-
+  const [error, setError]= useState("")
+   
+const history = useHistory()
 
 const [next, setNext] =useState();
   const [state, setState] = useState([
@@ -52,32 +54,39 @@ let y= [state][0][0].endDate.getDay();
 }
 
 // console.log(document.querySelectorAll(".rdrDay")[0].childNodes[0].classList)?document.querySelectorAll(".rdrDay")[0].childNodes[0].classList:"OK" ;
-//  function dashboard(){
+ function dashboard(){
   
-// history.push("/")
+history.push("/")
 
 
-// }
+
+
+
+}
 
 
 dif();
 week();
 
   return (
-    <div>
+    <div className="calendarRange">
       
 
       <DateRangePicker
   onChange={item => setState([item.selection])}
-  showSelectionPreview={true}
+  showSelectionPreview={false}
   moveRangeOnFirstSelection={false}
   week={1}
+  staticRanges={[]}
+  inputRanges={[]}
   ranges={state}
+  
   direction="horizontal"
   
 ></DateRangePicker>
-{/* <button onClick={dashboard} >Back </button> */}
+<Button variant="outline-secondary" onClick={dashboard} ><Link aria-current={true} onClick={dashboard} to="./employers">Back</Link> </Button>
 {next}
+
 
 {/* {console.log([state][0][0].startDate)};
 {console.log([state][0][0].endDate.getDay())};

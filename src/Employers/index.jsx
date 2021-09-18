@@ -1,14 +1,18 @@
 import React from 'react'
-import {useState} from "react"
+import {useState,useEffect,useLayoutEffect} from "react"
 import MainCalendar from "react-calendar"
 import Drawer from "../Drawer"
 import db from '../firebase.config';
+import {Form,Button} from "react-bootstrap"
 import { increment, decrement,collection, doc, setDoc,getDocs, getDoc, query, where, updateDoc,arrayUnion} from "firebase/firestore"; 
 import {useAuth} from "../contexts/AuthContext"
+import "./style.css"
 
 function Employers({count, startend}) {
-
+    
+const [stateB, setStateB]=useState(false)
     const [value, onChange]=useState(new Date())
+    const [display, setDisplay]=useState("display0")
 const [vv, setVV] =useState([]);
 const [mm, setMM] =useState([]);
 const {currentUser} = useAuth()
@@ -46,11 +50,14 @@ console.log("value=====>" + value.getDate())
 let [stateZ, setStateZ] = useState(person.holidaysFree)
 
 function okss(){
+    setStateB(true)
     oks();
     loop();
     loop2();
     loop3();
    ok();
+   setDisplay("display1")
+
  
 }
 let arr = []
@@ -172,16 +179,24 @@ querySnapshot.forEach((doc) => {
   })
 
 }
+
+
+
     return (
-        <div>
+
+
+        
+        <div className="theButton">
      
           {/* <p>Free holiday houers: {stateZ}</p>
            <p>Holiday taken: {count*7.5}</p> */}
-           <button onClick={okss}> the button </button>
-     
-      <Drawer name={person} takenx={count*7.5} v={vv} value={value} m={mm}></Drawer>
+           
+           <Button variant="outline-secondary" size="lg" className="theButtonOf" onClick={okss}> Book your holiday </Button>
+          
+      <Drawer name={person} takenx={count*7.5} v={vv} value={value} m={mm} display={display} setDisplay={setDisplay}></Drawer>
         </div>
     )
+    
 }
 
 export default Employers
